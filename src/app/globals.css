@@ -9,13 +9,48 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+body{
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  font-family: Impact, sans-serif;
+  background-color: rgb(1, 147, 91);
+  color: rgb(255, 255, 255);
+  animation: color-change 20s linear infinite alternate both;
 }
+@keyframes color-change{
+  0% {
+    background: #000000;
+  }
+  25% {
+    background: #c60101;
+  }
+  50% {
+    background: #01c601;
+  }
+  75% {
+    background: #011bc6;
+  }
+  100% {
+    background: #000000;
+  }
+}
+
+button{
+  padding: 10px 5px;
+  background-color: rgba(55, 17, 169, 0);
+  border: solid 2px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:hover{
+  transform: scale(1.10);
+}
+
+
