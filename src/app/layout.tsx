@@ -1,6 +1,8 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Wheel from "./Wheel";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +29,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Add the Wheel component here */}
+        <div style={{ textAlign: 'center', padding: '50px' }}>
+          <h1>MemeSlot</h1>
+          <p>🔥Spin For Free Memes🔥</p>
+          <Wheel /> {/* Add the Wheel component */}
+        </div>
+
+        {/* Render the children (page content) */}
         {children}
       </body>
     </html>
