@@ -12,25 +12,29 @@ We developed MemeSlot using Next.JS for the front end and ASP.NET for handling t
 
 [Challenges we ran into]
 
-Defining a fair but rewarding rarity system for memes
-Finding a way to categorize memes based on funniness in a way that feels natural
-Implementing smooth slot machine animations and making the experience feel engaging
-Integrating sound effects to improve the feel and excitement of the roll.
-Accomplishments that we're proud of
-Successfully implementing a slot machine mechanic that feels fun and rewarding
-Making an addictive and shareable meme experience that keeps users coming back
-Enhancing game feel with satisfying animations and sound effects to make each spin more engaging
+Defining a fair but rewarding rarity system for memes;
+Finding a way to categorize memes based on funniness in a way that feels natural;
+Implementing smooth slot machine animations and making the experience feel engaging;
+Integrating sound effects to improve the feel and excitement of the roll;
+
+[Accomplishments that we're proud of]
+
+Successfully implementing a slot machine mechanic that feels fun and rewarding;
+Making an addictive and shareable meme experience that keeps users coming back;
+Enhancing game feel with satisfying animations and sound effects to make each spin more engaging.
 
 [What we learned]
 
-How to gamify content in a way that enhances user engagement
-The importance of balancing randomness with meaningful reward structures
-How crucial game feel is—animations and sound effects play a huge role in making the experience satisfying and fun
-What's next for MemeSlot
-Adding user-submitted memes to expand the meme pool continuously
-Allowing users to create their own meme collection and share it with everyone else.
-Introducing special events or themed meme slots (e.g., seasonal or trending meme categories)
-Implementing a leaderboard or social sharing features so users can showcase their rarest meme finds
+How to gamify content in a way that enhances user engagement;
+The importance of balancing randomness with meaningful reward structures;
+How crucial game feel is—animations and sound effects play a huge role in making the experience satisfying and fun.
+
+[What's next for MemeSlot]
+
+Adding user-submitted memes to expand the meme pool continuously;
+Allowing users to create their own meme collection and share it with everyone else;
+Introducing special events or themed meme slots (e.g., seasonal or trending meme categories);
+Implementing a leaderboard or social sharing features so users can showcase their rarest meme finds.
 Exploring monetization options, such as premium spins for exclusive memes
 
 
