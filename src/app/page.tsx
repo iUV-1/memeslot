@@ -13,7 +13,7 @@ export default function Home() {
   ];
 
   const [ribbonClass, setRibbonClass] = useState('ribbon');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string; sound: string } | null>(null);
 
   // Refs for audio elements
   const buttonClickSoundRef = useRef<HTMLAudioElement>(null);
