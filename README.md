@@ -1,5 +1,5 @@
 👀Try it out!
-https://memeslot-gilt.vercel.app/
+memeslot.club
 
 [Inspiration]
 
