@@ -1,3 +1,6 @@
+👀Try it out!
+[memeslot.club](url)
+
 [Inspiration]
 
 We wanted to create a fun and engaging way to experience memes with an element of randomness and excitement. Slot machines are addictive, and memes are universally loved—so why not combine them? The idea was to introduce a gamified meme experience where users can "spin" to get different levels of humor, making each roll feel rewarding.
