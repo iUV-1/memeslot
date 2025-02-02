@@ -5,39 +5,39 @@ import './styles/animations.css';
 export default function Home() {
   const [isSpinning, setIsSpinning] = useState(false);
   const images = [
-    { url: '/images/common1.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common2.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common3.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common4.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common5.png', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common6.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common7.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common8.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common9.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common10.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common11.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common12.jpg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common13.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/common14.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
-    { url: '/images/rare1.png', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare2.jpeg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare3.jpeg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare4.jpeg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare5.png', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare6.png', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare7.jpeg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare8.jpeg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare9.jpeg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare10.jpg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare12.png', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare13.jpeg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare14.png', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/rare15.jpeg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: "/images/troll.png", alt: 'Image 1', sound: '/sounds/get out (basic).mp3' },
-    { url: '/images/rare11.jpg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
-    { url: '/images/legendary1.jpeg', alt: 'Image 2', sound: '/sounds/ta da (legendary).mp3' },
-    { url: '/images/legendary2.jpeg', alt: 'Image 2', sound: '/sounds/ta da (legendary).mp3' },
-    { url: '/images/common15.jpeg', alt: 'Image 3', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common1.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common2.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common3.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common4.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common5.png', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common6.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common7.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common8.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common9.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common10.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common11.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common12.jpg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common13.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/common14.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
+    { url: '/images/rare1.png', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare2.jpeg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare3.jpeg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare4.jpeg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare5.png', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare6.png', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare7.jpeg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare8.jpeg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare9.jpeg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare10.jpg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare12.png', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare13.jpeg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare14.png', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/rare15.jpeg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: "/images/troll.png", alt: 'Trololollolololol', sound: '/sounds/get out (basic).mp3' },
+    { url: '/images/rare11.jpg', alt: 'Rare', sound: '/sounds/yippee (rare).mp3' },
+    { url: '/images/legendary1.jpeg', alt: 'Super Rare', sound: '/sounds/ta da (legendary).mp3' },
+    { url: '/images/legendary2.jpeg', alt: 'Super Rare', sound: '/sounds/ta da (legendary).mp3' },
+    { url: '/images/common15.jpeg', alt: 'Common', sound: '/sounds/bruh (common) (new).mp3' },
   ];
 
   const [ribbonClass, setRibbonClass] = useState('ribbon');
@@ -89,7 +89,7 @@ export default function Home() {
       <audio ref={resultSoundRef} preload="auto" />
 
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl mb-8 text-center">Bruh Meme Slot</h1>
+        <h1 className="text-4xl mb-8 text-center">MemeSlot</h1>
 
         <div className="ribbon-container my-8 relative mt-32">
           {/* Top lights */}
@@ -141,8 +141,8 @@ export default function Home() {
             className="footer-image"
           />
           <div className="footer-contact">
-            <p>Contact: example@email.com</p>
-            <p>Phone: (123) 456-7890</p>
+            <p>Project Creators: Nam, Gia Minh, Minh Quyen</p>
+            <p>Phone📞: (517) 977 2108</p>
           </div>
         </footer>
 
