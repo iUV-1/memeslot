@@ -1,29 +1,44 @@
 * {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  }
+}
 @keyframes spinSlow {
     0% { 
-      transform: translateX(0);
+    transform: translateX(0);
     }
     100% { 
-      transform: translateX(-50%);
+    transform: translateX(-50%);
     }
-  }
-  
-  @keyframes spinFast {
+}
+
+@keyframes spinFast {
     from { transform: translateX(0); }
     to { transform: translateX(-200%); }
-  }
-  
-  .ribbon-container {
+}
+
+.ribbon-container {
     position: relative;
     width: 100%;
     height: 200px;
     overflow: hidden;
-    background: #000;
-  }
-  
-  .ribbon {
+    background: radial-gradient(
+    circle at center,
+      brown,    /* Lighter black in center */
+      #000000 100%   /* Pure black at edges */
+    );
+}
+
+body {
+    background: linear-gradient(
+    to bottom,
+      brown 0%,    /* Pure black at top */
+      brown 40%,   /* Lighter black around ribbon */
+      brown 40%,   /* Lighter black around ribbon */
+      #000000 100%   /* Pure black at bottom */
+    );
+    min-height: 100vh;
+}
+
+.ribbon {
     position: absolute;
     display: flex;
     width: 400%; /* Increased width to accommodate more images */
@@ -32,20 +47,85 @@
     filter: blur(3px);
     transition: all 0.3s ease;
     gap: 0;
-  }
-  
-  .ribbon.spinning {
+}
+
+.ribbon.spinning {
     filter: blur(0);
     animation: spinFast 2s linear infinite;
-  }
-  
-  .ribbon.stopping {
+}
+
+.ribbon.stopping {
     animation-duration: 5s;
     animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 1.0);
-  }
-  .ribbon img {
+}
+.ribbon img {
     flex-shrink: 0; /* Prevent images from shrinking */
     height: 100%;
     width: 150px; /* Fixed width */
     object-fit: cover;
-  }
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.light {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #ffd700);
+    box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+    animation: blink 0.5s alternate infinite;
+}
+
+.light:nth-child(odd) {
+    animation-delay: 0.25s;
+}
+
+.lights-container {
+    position: relative;
+    width: 100%;
+    pointer-events: none;
+    display: box;
+    justify-content: space-between;
+}
+
+.lights-top {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
+}
+.lights-bottom {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 150px;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(
+    to bottom,
+    #1a1a1a 0%,
+    #000000 100%
+    );
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.footer-contact {
+    color: rgb(234, 230, 230);
+    font-size: 0.9rem;
+    text-align: left;
+}

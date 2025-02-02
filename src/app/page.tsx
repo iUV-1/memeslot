@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import './styles/animations.css';
 
 export default function Home() {
+  const [isSpinning, setIsSpinning] = useState(false);
   const images = [
     { url: "/images/troll.png", alt: 'Image 1', sound: '/sounds/get out (basic).mp3' },
     { url: '/images/rare11.jpg', alt: 'Image 2', sound: '/sounds/yippee (rare).mp3' },
@@ -18,48 +19,40 @@ export default function Home() {
   const buttonClickSoundRef = useRef<HTMLAudioElement>(null);
   const spinStartSoundRef = useRef<HTMLAudioElement>(null);
   const resultSoundRef = useRef<HTMLAudioElement>(null);
-
-  const handleSpin = () => {
-    // Play button click sound
+  const handleButtonClick = () => {
+    // Play sounds regardless of spin state
     if (buttonClickSoundRef.current) {
-      buttonClickSoundRef.current.currentTime = 0; // Rewind to the start
+      buttonClickSoundRef.current.currentTime = 0;
       buttonClickSoundRef.current.play();
     }
-
-    // Play spin start sound
-    if (spinStartSoundRef.current) {
-      spinStartSoundRef.current.currentTime = 0; // Rewind to the start
-      spinStartSoundRef.current.play();
-    }
-
-    // Start spinning
-    setRibbonClass('ribbon spinning');
-    
-    // After 3 seconds, start slowing down
-    setTimeout(() => {
-      setRibbonClass('ribbon spinning stopping');
-
-      // After 2 more seconds, select winner and stop
+    // Only proceed with spin if not already spinning
+    if (!isSpinning) {
+      setIsSpinning(true);
+      if (spinStartSoundRef.current) {
+        spinStartSoundRef.current.currentTime = 0;
+        spinStartSoundRef.current.play();
+      }
+      setRibbonClass('ribbon spinning');
       setTimeout(() => {
-        const selected = images[Math.floor(Math.random() * images.length)];
-        setSelectedImage(selected);
-        setRibbonClass('ribbon');
-
-        // Play result sound
-        if (resultSoundRef.current) {
-          resultSoundRef.current.src = selected.sound; // Set the sound file
-          resultSoundRef.current.currentTime = 0; // Rewind to the start
-          resultSoundRef.current.play();
-        }
-      }, 2000);
-    }, 3000);
+        setRibbonClass('ribbon spinning stopping');
+        setTimeout(() => {
+          const selected = images[Math.floor(Math.random() * images.length)];
+          setSelectedImage(selected);
+          setRibbonClass('ribbon');
+          setIsSpinning(false);
+          if (resultSoundRef.current) {
+            resultSoundRef.current.src = selected.sound;
+            resultSoundRef.current.currentTime = 0;
+            resultSoundRef.current.play();
+          }
+        }, 2000);
+      }, 3000);
+    }
   };
-
   const handleReset = () => {
     setSelectedImage(null);
     setRibbonClass('ribbon');
   };
-
   return (
     <div className="bg-black min-h-screen text-white">
       {/* Sound effects */}
@@ -70,7 +63,17 @@ export default function Home() {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl mb-8 text-center">Bruh Meme Slot</h1>
 
-        <div className="ribbon-container my-8">
+        <div className="ribbon-container my-8 relative mt-32">
+          {/* Top lights */}
+          <div className="lights-container mb-4">
+            <div className="lights-top">
+              {[...Array(20)].map((_, i) => (
+                <div key={`top-${i}`} className="light" />
+              ))}
+            </div>
+          </div>
+
+          {/* Ribbon content */}
           <div className={ribbonClass}>
             {[...images, ...images, ...images, ...images, ...images, ...images].map((image, i) => (
               <img 
@@ -81,18 +84,41 @@ export default function Home() {
               />
             ))}
           </div>
+
+          {/* Bottom lights */}
+          <div className="lights-container mt-4">
+            <div className="lights-bottom">
+              {[...Array(20)].map((_, i) => (
+                <div key={`bottom-${i}`} className="light" />
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="text-center">
           <button 
-            onClick={handleSpin}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl 
-            transition-transform duration-200 hover:scale-110"
+            onClick={handleButtonClick}
+            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-xl 
+            transition-transform duration-200 hover:scale-110 ${isSpinning ? 'opacity-50' : ''}`}
           >
-            SPIN!
+            {isSpinning ? 'Spinning...' : 'SPIN!'}
           </button>
         </div>
 
+        {/* Footer */}
+        <footer className="footer">
+          <img 
+            src="/images/troll.png" 
+            alt="Footer Logo" 
+            className="footer-image"
+          />
+          <div className="footer-contact">
+            <p>Contact: example@email.com</p>
+            <p>Phone: (123) 456-7890</p>
+          </div>
+        </footer>
+
+        {/* Result Modal */}
         {selectedImage && (
           <div className="fixed inset-0 bg-black/75 flex items-center justify-center">
             <div className="bg-white/10 p-8 rounded-lg text-center">
@@ -105,7 +131,7 @@ export default function Home() {
               <p className="text-xl mb-6">{selectedImage.alt}</p>
               <div className="flex gap-4 justify-center">
                 <button
-                  onClick={handleSpin}
+                  onClick={handleButtonClick}
                   className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full
                   transition-transform duration-200 hover:scale-110"
                 >
