@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './styles/animations.css';
 
 export default function Home() {
@@ -35,9 +35,10 @@ export default function Home() {
       setRibbonClass('ribbon spinning');
       setTimeout(() => {
         setRibbonClass('ribbon spinning stopping');
-        setTimeout(() => {
-          const selected = images[Math.floor(Math.random() * images.length)];
-          setSelectedImage(selected);
+        setTimeout(async () => {
+          const selected = WeightedRandom();
+          const result = await GetImageAPI(selected?.rarity);
+          setSelectedImage(JSON.parse(result).imageURL);
           setRibbonClass('ribbon');
           setIsSpinning(false);
           if (resultSoundRef.current) {
@@ -53,6 +54,47 @@ export default function Home() {
     setSelectedImage(null);
     setRibbonClass('ribbon');
   };
+
+  async function GetImageAPI(bucket) {
+    const response = await fetch("https://memeslot-cydugrbdhmdaggha.westus2-01.azurewebsites.net/GetMeme/" + bucket);
+    const data = await response.json();
+    return data
+  } 
+  const items = [
+    {rarity: "legendary", weight: 0.01, images:"/images/legendary.jpg", sound: '/sounds/ta da (legendary).mp3'},
+    {rarity: "epic", weight: 5, images:"/images/epic.jpg", sound: '/sounds/bruh (common) (new).mp3'},
+    {rarity: "rare", weight: 30, images:"/images/rare.jpg", sound: '/sounds/yippee (rare).mp3'},
+    {rarity: "common", weight: 64.99, images:"/images/common.jpg", sound: '/sounds/get out (basic).mp3'},
+  ]
+
+  const WeightedRandom = () => {
+        // Calculate total weight
+        const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
+
+        // Get a random number between 0 and totalWeight
+        let randomNum = Math.random() * totalWeight;
+    
+        // Select an item based on weight
+        for (const item of items) {
+            if (randomNum < item.weight) {
+                return {rarity: item.rarity, images: item.images};
+            }
+            randomNum -= item.weight;
+        }
+  } 
+
+  const randomItemsRef = useRef<{ rarity: string; images: string }[]>([]);
+
+  useEffect(() => {
+    const newItems = [];
+    for (let i = 0; i <= 50; i++) {
+      const item = WeightedRandom();
+      if (item) {
+        newItems.push(item);
+      }
+    }
+    randomItemsRef.current = newItems;
+  }, []);
   return (
     <div className="bg-black min-h-screen text-white">
       {/* Sound effects */}
@@ -75,14 +117,16 @@ export default function Home() {
 
           {/* Ribbon content */}
           <div className={ribbonClass}>
-            {[...images, ...images, ...images, ...images, ...images, ...images].map((image, i) => (
-              <img 
-                key={i}
-                src={image.url}
-                alt={image.alt}
-                className="h-full w-[150px] object-cover"
-              />
-            ))}
+            {
+              randomItemsRef.current.map((rarity, i) => (
+                <img 
+                  key={i}
+                  src={rarity.images}
+                  alt={"keep yourself safe"}
+                  className="h-full w-[150px] object-cover"
+                />
+              ))
+            }
           </div>
 
           {/* Bottom lights */}
